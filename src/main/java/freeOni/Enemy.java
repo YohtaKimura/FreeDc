@@ -2,21 +2,23 @@ package freeOni;
 
 import java.util.concurrent.ThreadLocalRandom;
 import javafx.geometry.Point3D;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.PhongMaterial;
-import javafx.scene.shape.Box;
 
 public class Enemy extends SimpleCube {
   private Point3D direction;
+  private Group player;
+  private double territoryRadius = 7;
   private ThreadLocalRandom random = ThreadLocalRandom.current();
   private Point3D currentPoint = new Point3D(
-      random.nextInt(10) -5,
+      random.nextInt(20) - 10,
       0,
-      random.nextInt(10) -5
+      random.nextInt(20) - 10
   );
 
-  public Enemy() {
+  public Enemy(Group player) {
     super(Color.RED);
+    this.player = player;
     setRandomDirection();
     currentPoint.add(direction);
     set(currentPoint);
@@ -35,7 +37,11 @@ public class Enemy extends SimpleCube {
   }
 
   public void onUpdate() {
-    setRandomDirection();
+    if (shouldBeExited()) {
+      setPlayerDirection();
+    } else {
+      setRandomDirection();
+    }
     currentPoint = currentPoint.add(direction);
     set(currentPoint);
   }
@@ -57,5 +63,29 @@ public class Enemy extends SimpleCube {
       default:
         throw new IllegalStateException();
     }
+  }
+
+  private void setPlayerDirection() {
+    double degree = Oni2DUtils.getDegree(player, this);
+
+    if (-45 <= degree && degree < 45) {
+      direction = new Point3D(1, 0, 0);
+    }
+    if (45 <= degree && degree < 135) {
+      direction = new Point3D(0, 0, 1);
+    }
+    if (135 <= degree && degree <= 180) {
+      direction = new Point3D(-1, 0, 0);
+    }
+    if (-180 <= degree  && degree < -135) {
+      direction = new Point3D(-1, 0, 0);
+    }
+    if (-135 <= degree  && degree < -45) {
+      direction = new Point3D(0, 0, -1);
+    }
+  }
+
+  private boolean shouldBeExited() {
+    return Oni2DUtils.getDistance(player, this) < territoryRadius;
   }
 }

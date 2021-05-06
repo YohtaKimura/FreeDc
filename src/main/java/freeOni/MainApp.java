@@ -19,16 +19,13 @@ public class MainApp extends Application {
 
   private SimpleCube origin = new SimpleCube(Color.SPRINGGREEN);
   private SimpleCube food = new SimpleCube(Color.YELLOW);
-  private Enemy enemy = new Enemy();
+  private Enemy enemy = new Enemy(snake);
   private ThreadLocalRandom random = ThreadLocalRandom.current();
 
   private double t = 0;
   private AnimationTimer timer;
 
   private Scene createScene() {
-    SimpleCube simpleCube = new SimpleCube(Color.BLUE);
-    snake.getChildren().add(simpleCube);
-
     food.setTranslateX(random.nextInt(10) - 5);
     food.setTranslateY(0);
     food.setTranslateZ(random.nextInt(10) - 5);
