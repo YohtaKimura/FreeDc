@@ -1,5 +1,6 @@
-package freeOni;
+package Wall;
 
+import Maze3D.MazeWall;
 import java.util.concurrent.ThreadLocalRandom;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -15,26 +16,22 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
   private Group root = new Group();
-  private Snake snake = new Snake();
 
   private SimpleCube origin = new SimpleCube(Color.SPRINGGREEN);
-  private SimpleCube food = new SimpleCube(Color.YELLOW);
-  private Enemy enemy = new Enemy(snake);
+  private Me me = new Me(Color.BLUE, new Point3D(0, 0, 0));
   private ThreadLocalRandom random = ThreadLocalRandom.current();
+  private Wall wall = new Wall(Color.GRAY, new Point3D(3, 0, 3));
 
   private double t = 0;
   private AnimationTimer timer;
 
   private Scene createScene() {
-    food.setTranslateX(random.nextInt(10) - 5);
-    food.setTranslateY(0);
-    food.setTranslateZ(random.nextInt(10) - 5);
 
     origin.setTranslateX(0);
     origin.setTranslateY(0);
     origin.setTranslateZ(0);
 
-    root.getChildren().addAll(snake, food, origin, enemy);
+    root.getChildren().addAll(origin, me, wall);
     Scene scene = new Scene(root, 1280, 720, true);
     PerspectiveCamera camera = new PerspectiveCamera(true);
     camera.getTransforms().addAll(new Translate(0, -30, -30), new Rotate(-45, Rotate.X_AXIS));
@@ -54,19 +51,8 @@ public class MainApp extends Application {
     return scene;
   }
 
-  private void moveFood() {
-    food.setTranslateX(random.nextInt(10) - 5);
-    food.setTranslateY(0);
-    food.setTranslateZ(random.nextInt(10) - 5);
-  }
-
   private void onUpdate() {
-    snake.onUpdate();
-    enemy.onUpdate();
-    if (snake.isCollision(food)) {
-      moveFood();
-      snake.grow();
-    }
+    me.onUpdate(wall);
   }
 
   @Override
@@ -84,22 +70,22 @@ public class MainApp extends Application {
     scene.setOnKeyPressed(e -> {
       switch (e.getCode()) {
         case W:
-          snake.setDirectionPositiveZ();
+          me.setDirectionPositiveZ();
           break;
         case S:
-          snake.setDirectionNegativeZ();
+          me.setDirectionNegativeZ();
           break;
         case A:
-          snake.setDirectionNegativeX();
+          me.setDirectionNegativeX();
           break;
         case D:
-          snake.setDirectionPositiveX();
+          me.setDirectionPositiveX();
           break;
         case UP:
-          snake.setDirectionNegativeY();
+          me.setDirectionNegativeY();
           break;
         case DOWN:
-          snake.setDirectionPositiveY();
+          me.setDirectionPositiveY();
           break;
       }
     });

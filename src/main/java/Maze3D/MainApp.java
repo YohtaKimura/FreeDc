@@ -1,4 +1,4 @@
-package freeOni;
+package Maze3D;
 
 import java.util.concurrent.ThreadLocalRandom;
 import javafx.animation.AnimationTimer;
@@ -15,29 +15,29 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
   private Group root = new Group();
-  private Snake snake = new Snake();
 
   private SimpleCube origin = new SimpleCube(Color.SPRINGGREEN);
-  private SimpleCube food = new SimpleCube(Color.YELLOW);
-  private Enemy enemy = new Enemy(snake);
-  private ThreadLocalRandom random = ThreadLocalRandom.current();
+  private Me me = new Me(Color.BLUE, new Point3D(0, 0, 0));
+  private MazeWall mazeWall = new MazeWall(15, 15);
 
+  private ThreadLocalRandom random = ThreadLocalRandom.current();
+  private PerspectiveCamera camera = new PerspectiveCamera(true);
+  private Translate cameraPosition = new Translate(0, -30, -30);
+  private Integer cameraAngleDegree = -45;
+  private Rotate cameraAngle = new Rotate(cameraAngleDegree, Rotate.X_AXIS);
   private double t = 0;
   private AnimationTimer timer;
 
   private Scene createScene() {
-    food.setTranslateX(random.nextInt(10) - 5);
-    food.setTranslateY(0);
-    food.setTranslateZ(random.nextInt(10) - 5);
 
     origin.setTranslateX(0);
     origin.setTranslateY(0);
     origin.setTranslateZ(0);
 
-    root.getChildren().addAll(snake, food, origin, enemy);
+    root.getChildren().addAll(origin, me, mazeWall);
     Scene scene = new Scene(root, 1280, 720, true);
-    PerspectiveCamera camera = new PerspectiveCamera(true);
-    camera.getTransforms().addAll(new Translate(0, -30, -30), new Rotate(-45, Rotate.X_AXIS));
+
+    camera.getTransforms().addAll(cameraPosition, cameraAngle);
     scene.setCamera(camera);
 
     timer = new AnimationTimer() {
@@ -54,19 +54,11 @@ public class MainApp extends Application {
     return scene;
   }
 
-  private void moveFood() {
-    food.setTranslateX(random.nextInt(10) - 5);
-    food.setTranslateY(0);
-    food.setTranslateZ(random.nextInt(10) - 5);
-  }
-
   private void onUpdate() {
-    snake.onUpdate();
-    enemy.onUpdate();
-    if (snake.isCollision(food)) {
-      moveFood();
-      snake.grow();
-    }
+    cameraPosition.setX(cameraPosition.getTx() + me.getDirection().getX());
+    cameraPosition.setZ(cameraPosition.getTz() + me.getDirection().getZ());
+    cameraAngle.setPivotX(cameraAngleDegree);
+    me.onUpdate(mazeWall);
   }
 
   @Override
@@ -84,23 +76,27 @@ public class MainApp extends Application {
     scene.setOnKeyPressed(e -> {
       switch (e.getCode()) {
         case W:
-          snake.setDirectionPositiveZ();
+          me.setDirectionPositiveZ();
           break;
         case S:
-          snake.setDirectionNegativeZ();
+          me.setDirectionNegativeZ();
           break;
         case A:
-          snake.setDirectionNegativeX();
+          me.setDirectionNegativeX();
           break;
         case D:
-          snake.setDirectionPositiveX();
+          me.setDirectionPositiveX();
           break;
         case UP:
-          snake.setDirectionNegativeY();
+          me.setDirectionNegativeY();
           break;
         case DOWN:
-          snake.setDirectionPositiveY();
+          me.setDirectionPositiveY();
           break;
+        case J:
+          cameraAngleDegree++;
+        case K:
+          cameraAngleDegree--;
       }
     });
     stage.setScene(scene);

@@ -6,14 +6,14 @@ import java.util.Deque;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-class Maze {
+public class Maze {
   List<Coord> nodes = new ArrayList<>();
   int[][] maze;
   int height;
   int width;
   ThreadLocalRandom random = ThreadLocalRandom.current();
-  Deque<Coord> history = new ArrayDeque<Coord>();
-  Maze(int height, int width){
+  Deque<Coord> history = new ArrayDeque<>();
+  public Maze(int height, int width){
     // height and width must be odd and greater than 5
     this.height = height;
     this.width = width;
