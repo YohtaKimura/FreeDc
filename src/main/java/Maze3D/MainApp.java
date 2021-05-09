@@ -23,7 +23,7 @@ public class MainApp extends Application {
   private ThreadLocalRandom random = ThreadLocalRandom.current();
   private PerspectiveCamera camera = new PerspectiveCamera(true);
   private Translate cameraPosition = new Translate(0, -30, -30);
-  private Integer cameraAngleDegree = -45;
+  private double cameraAngleDegree = - 45.;
   private Rotate cameraAngle = new Rotate(cameraAngleDegree, Rotate.X_AXIS);
   private double t = 0;
   private AnimationTimer timer;
@@ -37,7 +37,7 @@ public class MainApp extends Application {
     root.getChildren().addAll(origin, me, mazeWall);
     Scene scene = new Scene(root, 1280, 720, true);
 
-    camera.getTransforms().addAll(cameraPosition, cameraAngle);
+    camera.getTransforms().addAll(cameraPosition,  cameraAngle);
     scene.setCamera(camera);
 
     timer = new AnimationTimer() {
@@ -57,7 +57,11 @@ public class MainApp extends Application {
   private void onUpdate() {
     cameraPosition.setX(cameraPosition.getTx() + me.getDirection().getX());
     cameraPosition.setZ(cameraPosition.getTz() + me.getDirection().getZ());
-    cameraAngle.setPivotX(cameraAngleDegree);
+
+    System.out.println(cameraAngleDegree);
+    cameraAngle.setAngle(cameraAngleDegree);
+    // cameraAngle.setAngle(-30);
+
     me.onUpdate(mazeWall);
   }
 
@@ -95,8 +99,10 @@ public class MainApp extends Application {
           break;
         case J:
           cameraAngleDegree++;
+          break;
         case K:
           cameraAngleDegree--;
+          break;
       }
     });
     stage.setScene(scene);
