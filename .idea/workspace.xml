@@ -2,6 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2f740ca-8a48-4b99-a28c-0863d388f2cf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Maze3D/Clock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clockNumber/ClockNumber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clockNumber/EightArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clockNumber/FiveArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clockNumber/FourArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clockNumber/NineArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clockNumber/OneArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clockNumber/SevenArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clockNumber/SixArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clockNumber/ThreeArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clockNumber/TwoArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clockNumber/ZeroArray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -10,6 +22,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Maze3D/MainApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Maze3D/MainApp$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Maze3D/MainApp$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Maze3D/MainApp$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Maze3D/MainApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Maze3D/MainApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Maze3D/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Maze3D/MainApp.java" afterDir="false" />
@@ -48,6 +61,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="clockNumber" />
+      <recent name="ClockNumber" />
       <recent name="Maze3D" />
     </key>
     <key name="CopyFile.RECENT_KEYS">

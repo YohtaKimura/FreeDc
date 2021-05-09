@@ -18,6 +18,7 @@ public class MainApp extends Application {
 
   private SimpleCube origin = new SimpleCube(Color.SPRINGGREEN);
   private Me me = new Me(Color.BLUE, new Point3D(0, 0, 0));
+  private Clock clock = new Clock();
   private MazeWall mazeWall = new MazeWall(15, 15);
 
   private ThreadLocalRandom random = ThreadLocalRandom.current();
@@ -34,7 +35,7 @@ public class MainApp extends Application {
     origin.setTranslateY(0);
     origin.setTranslateZ(0);
 
-    root.getChildren().addAll(origin, me, mazeWall);
+    root.getChildren().addAll(origin, me, mazeWall, clock);
     Scene scene = new Scene(root, 1280, 720, true);
 
     camera.getTransforms().addAll(cameraPosition,  cameraAngle);
@@ -57,10 +58,7 @@ public class MainApp extends Application {
   private void onUpdate() {
     cameraPosition.setX(cameraPosition.getTx() + me.getDirection().getX());
     cameraPosition.setZ(cameraPosition.getTz() + me.getDirection().getZ());
-
-    System.out.println(cameraAngleDegree);
     cameraAngle.setAngle(cameraAngleDegree);
-    // cameraAngle.setAngle(-30);
 
     me.onUpdate(mazeWall);
   }
