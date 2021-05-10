@@ -56,11 +56,11 @@ public class MainApp extends Application {
   }
 
   private void onUpdate() {
-    cameraPosition.setX(cameraPosition.getTx() + me.getDirection().getX());
-    cameraPosition.setZ(cameraPosition.getTz() + me.getDirection().getZ());
+    Point3D cameraNextDir = me.onUpdate(mazeWall);
+    cameraPosition.setX(cameraPosition.getTx() + cameraNextDir.getX());
+    cameraPosition.setZ(cameraPosition.getTz() + cameraNextDir.getZ());
     cameraAngle.setAngle(cameraAngleDegree);
-
-    me.onUpdate(mazeWall);
+    clock.onUpdate();
   }
 
   @Override

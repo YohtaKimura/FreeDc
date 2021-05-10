@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class ClockNumber {
 
-  LocalDateTime localDateTime = LocalDateTime.now();
+
   public int getHeight() {
     return 8;
   }
@@ -13,25 +13,53 @@ public class ClockNumber {
     return 5;
   }
 
+  public int getFirstHour() {
+    LocalDateTime localDateTime = LocalDateTime.now();
+    int h = localDateTime.getHour();
+    return h/10;
+  }
+
   public int[][] getFirstHourArray() {
+    LocalDateTime localDateTime = LocalDateTime.now();
     int h = localDateTime.getHour();
     int result = h/10;
     return getNumberArray(result);
   }
 
+  public int getSecondHour() {
+    LocalDateTime localDateTime = LocalDateTime.now();
+    int h = localDateTime.getHour();
+    return h%10;
+  }
+
   public int[][] getSecondHourArray() {
+    LocalDateTime localDateTime = LocalDateTime.now();
     int h = localDateTime.getHour();
     int result = h%10;
     return getNumberArray(result);
   }
 
+  public int getFirstMinute() {
+    LocalDateTime localDateTime = LocalDateTime.now();
+    int h = localDateTime.getMinute();
+    return h/10;
+  }
+
   public int[][] getFirstMinuteArray() {
+    LocalDateTime localDateTime = LocalDateTime.now();
     int m = localDateTime.getMinute();
     int result = m/10;
     return getNumberArray(result);
   }
 
+  public int getSecondMinute() {
+    LocalDateTime localDateTime = LocalDateTime.now();
+    int h = localDateTime.getMinute();
+    return h%10;
+  }
+
   public int[][] getSecondMinuteArray() {
+    LocalDateTime localDateTime = LocalDateTime.now();
     int m = localDateTime.getMinute();
     int result = m%10;
     return getNumberArray(result);
@@ -62,5 +90,9 @@ public class ClockNumber {
       default:
         return null;
     }
+  }
+
+  public int[][] getColon(){
+    return ColonArray.getColon();
   }
 }

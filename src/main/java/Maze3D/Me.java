@@ -15,23 +15,26 @@ class Me extends SimpleCube {
     super(color, currentPoint);
   }
 
-  public void onUpdate(Group participant) {
+  public Point3D onUpdate(Group participant) {
 
     Point3D nextPoint = getNextPoint();
     ObservableList<Node> children  = participant.getChildren();
-
+    Point3D cameraNextDirection;
     for (Node child: children)
     if (child instanceof Wall) {
       Wall wall = (Wall) child;
       if (CubeUtils.isColliding(nextPoint, wall.getCurrentPoint())) {
+        cameraNextDirection = new Point3D(0, 0, 0);
         direction = new Point3D(0, 0, 0);
-        return;
+        return cameraNextDirection;
       }
     }
 
     set(nextPoint);
     currentPoint = nextPoint;
+    cameraNextDirection = direction;
     direction = new Point3D(0, 0, 0);
+    return cameraNextDirection;
   }
 
   public void setDirectionPositiveZ() {
