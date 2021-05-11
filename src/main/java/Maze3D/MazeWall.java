@@ -19,8 +19,8 @@ public class MazeWall extends Group {
     pointIsPath = new HashMap<>();
     mazePoints = new ArrayList<>();
     mazeInt = maze.getMaze();
-    for(int i = 0; i < 15; i++) {
-      for(int j = 0; j < 15; j++) {
+    for(int i = 0; i < height; i++) {
+      for(int j = 0; j < width; j++) {
         if (mazeInt[i][j] == 1) {
           Point3D wallPoint = new Point3D(i - (height - 1)/2, 0, j - (width - 1)/2);
           Wall wall = new Wall(Color.GRAY, wallPoint);

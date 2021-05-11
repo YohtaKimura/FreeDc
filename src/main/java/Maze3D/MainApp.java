@@ -24,7 +24,7 @@ public class MainApp extends Application {
   private Me me;
   private Enemy enemy;
   private Clock clock = new Clock();
-  private MazeWall mazeWall = new MazeWall(15, 15);
+  private MazeWall mazeWall = new MazeWall(25, 25);
 
   private ThreadLocalRandom random = ThreadLocalRandom.current();
   private PerspectiveCamera camera = new PerspectiveCamera(true);
@@ -78,6 +78,7 @@ public class MainApp extends Application {
     initialCameraPosition.setX(initialCameraPosition.getTx() + cameraNextDir.getX());
     initialCameraPosition.setZ(initialCameraPosition.getTz() + cameraNextDir.getZ());
     cameraAngle.setAngle(cameraAngleDegree);
+    enemy.onUpdate();
     clock.onUpdate();
   }
 
