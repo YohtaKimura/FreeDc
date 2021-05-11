@@ -13,6 +13,7 @@ class Me extends SimpleCube {
 
   public Me(Color color, Point3D currentPoint) {
     super(color, currentPoint);
+    this.currentPoint = currentPoint;
   }
 
   public Point3D onUpdate(Group participant) {

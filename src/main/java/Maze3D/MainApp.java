@@ -1,11 +1,15 @@
 package Maze3D;
 
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Point3D;
 import javafx.scene.Group;
+import javafx.scene.LightBase;
 import javafx.scene.PerspectiveCamera;
+import javafx.scene.PointLight;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
@@ -17,15 +21,19 @@ public class MainApp extends Application {
   private Group root = new Group();
 
   private SimpleCube origin = new SimpleCube(Color.SPRINGGREEN);
-  private Me me = new Me(Color.BLUE, new Point3D(0, 0, 0));
+  private Me me;
+  private Enemy enemy;
   private Clock clock = new Clock();
   private MazeWall mazeWall = new MazeWall(15, 15);
 
   private ThreadLocalRandom random = ThreadLocalRandom.current();
   private PerspectiveCamera camera = new PerspectiveCamera(true);
-  private Translate cameraPosition = new Translate(0, -30, -30);
+  private Translate initialCameraPosition = new Translate(0, -30, -30);
   private double cameraAngleDegree = - 45.;
   private Rotate cameraAngle = new Rotate(cameraAngleDegree, Rotate.X_AXIS);
+  private LightBase light = new PointLight();
+
+
   private double t = 0;
   private AnimationTimer timer;
 
@@ -35,10 +43,20 @@ public class MainApp extends Application {
     origin.setTranslateY(0);
     origin.setTranslateZ(0);
 
-    root.getChildren().addAll(origin, me, mazeWall, clock);
+    List<Point3D> pathPoints = mazeWall.mazePoints.stream().filter(mazeWall::isPath).collect(Collectors.toList());
+    Point3D a = pathPoints.get(random.nextInt(pathPoints.size()));
+    Point3D initialMePosition = pathPoints.get(random.nextInt(pathPoints.size()));
+    me = new Me(Color.BLUE, initialMePosition);
+    initialCameraPosition.setX(initialCameraPosition.getTx() + initialMePosition.getX());
+    initialCameraPosition.setZ(initialCameraPosition.getTz() + initialMePosition.getZ());
+
+    enemy = new Enemy(me, pathPoints.get(random.nextInt(pathPoints.size())));
+    light.getTransforms().add( new Translate( 50 , -100.0 , 0 ) );
+
+    root.getChildren().addAll(origin, me, enemy, mazeWall, clock, light);
     Scene scene = new Scene(root, 1280, 720, true);
 
-    camera.getTransforms().addAll(cameraPosition,  cameraAngle);
+    camera.getTransforms().addAll(initialCameraPosition,  cameraAngle);
     scene.setCamera(camera);
 
     timer = new AnimationTimer() {
@@ -57,8 +75,8 @@ public class MainApp extends Application {
 
   private void onUpdate() {
     Point3D cameraNextDir = me.onUpdate(mazeWall);
-    cameraPosition.setX(cameraPosition.getTx() + cameraNextDir.getX());
-    cameraPosition.setZ(cameraPosition.getTz() + cameraNextDir.getZ());
+    initialCameraPosition.setX(initialCameraPosition.getTx() + cameraNextDir.getX());
+    initialCameraPosition.setZ(initialCameraPosition.getTz() + cameraNextDir.getZ());
     cameraAngle.setAngle(cameraAngleDegree);
     clock.onUpdate();
   }
