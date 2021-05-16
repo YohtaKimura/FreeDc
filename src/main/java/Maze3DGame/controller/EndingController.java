@@ -5,12 +5,12 @@ import Maze3DGame.model.SceneName;
 import javafx.event.Event;
 import javafx.stage.Stage;
 
-public class ViewOneController {
+public class EndingController {
 
 	private Stage stage;
 
 	/** Must inject a stage */
-	public ViewOneController(Stage stage) {
+	public EndingController(Stage stage) {
 		if (stage == null) {
 			throw new IllegalArgumentException("Stage cannot be null");
 		}

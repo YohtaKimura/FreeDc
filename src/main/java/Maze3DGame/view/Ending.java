@@ -1,6 +1,6 @@
 package Maze3DGame.view;
 
-import Maze3DGame.controller.ViewOneController;
+import Maze3DGame.controller.EndingController;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,13 +13,13 @@ import multiScene.view.ViewMaker;
 
 public class Ending implements ViewMaker {
 	private Stage stage;
-  private ViewOneController viewOneController;
+  private EndingController endingController;
 
 	public Ending(Stage stage) {
 		if (stage == null) {
 			throw new IllegalArgumentException("Stage cannot be null");
 		}
-		this.viewOneController  = new ViewOneController(stage);
+		this.endingController = new EndingController(stage);
 		this.stage = stage;
 	}
 
@@ -33,7 +33,7 @@ public class Ending implements ViewMaker {
 
 		Button backButton = new Button("Back");
 		backButton.setOnMousePressed((e) -> {
-			viewOneController.handleMousePress(e);
+			endingController.handleMousePress(e);
 		});
 		Button closeButton = new Button("Close");
 		closeButton.setOnMousePressed(e -> stage.close());
