@@ -174,7 +174,7 @@ public class Maze {
  }
 
   static public void main(String[] args) {
-    Maze m = new Maze(15,15);
+    Maze m = new Maze(25,25);
     m.print();
   }
 }

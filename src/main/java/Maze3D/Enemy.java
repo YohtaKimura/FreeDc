@@ -1,7 +1,10 @@
 package Maze3D;
 
 import java.util.concurrent.ThreadLocalRandom;
+import javafx.collections.ObservableList;
 import javafx.geometry.Point3D;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.paint.Color;
 
 public class Enemy extends SimpleCube {
@@ -32,14 +35,30 @@ public class Enemy extends SimpleCube {
         getTranslateZ() == c.getTranslateZ();
   }
 
-  public void onUpdate() {
+  public void onUpdate(Group participant) {
     if (shouldBeExited()) {
       setPlayerDirection();
     } else {
       setRandomDirection();
     }
+
+    Point3D nextPoint = getNextPoint();
+    ObservableList<Node> children  = participant.getChildren();
+    for (Node child: children)
+    if (child instanceof Wall) {
+      Wall wall = (Wall) child;
+      if (CubeUtils.isColliding(nextPoint, wall.getCurrentPoint())) {
+        direction = new Point3D(0, 0, 0);
+        return;
+      }
+    }
+
     currentPoint = currentPoint.add(direction);
     set(currentPoint);
+  }
+
+  Point3D getNextPoint() {
+    return new Point3D(currentPoint.getX() + direction.getX(), currentPoint.getY() + direction.getY(), currentPoint.getZ() + direction.getZ());
   }
 
   private void setRandomDirection() {

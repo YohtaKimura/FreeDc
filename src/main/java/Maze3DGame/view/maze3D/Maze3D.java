@@ -1,10 +1,10 @@
-package Maze3D;
+package Maze3DGame.view.maze3D;
 
+import Maze3DGame.controller.Maze3DController;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import javafx.animation.AnimationTimer;
-import javafx.application.Application;
 import javafx.geometry.Point3D;
 import javafx.scene.Group;
 import javafx.scene.LightBase;
@@ -16,15 +16,17 @@ import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 
-public class MainApp extends Application {
+public class Maze3D {
 
   private Group root = new Group();
 
   private SimpleCube origin = new SimpleCube(Color.SPRINGGREEN);
   private Me me;
   private Enemy enemy;
+  private Princess princess;
   private Clock clock = new Clock();
-  private MazeWall mazeWall = new MazeWall(25, 25);
+  private MazeWall mazeWall;
+  private Maze3DController maze3DController;
 
   private ThreadLocalRandom random = ThreadLocalRandom.current();
   private PerspectiveCamera camera = new PerspectiveCamera(true);
@@ -37,12 +39,15 @@ public class MainApp extends Application {
   private double t = 0;
   private AnimationTimer timer;
 
-  private Scene createScene() {
+  public Scene createMazeScene(int height, int width, Stage stage) {
 
     origin.setTranslateX(0);
     origin.setTranslateY(0);
     origin.setTranslateZ(0);
 
+    maze3DController = new Maze3DController(stage);
+
+    mazeWall = new MazeWall(height, width);
     List<Point3D> pathPoints = mazeWall.mazePoints.stream().filter(mazeWall::isPath).collect(Collectors.toList());
     Point3D a = pathPoints.get(random.nextInt(pathPoints.size()));
     Point3D initialMePosition = pathPoints.get(random.nextInt(pathPoints.size()));
@@ -51,49 +56,15 @@ public class MainApp extends Application {
     initialCameraPosition.setZ(initialCameraPosition.getTz() + initialMePosition.getZ());
 
     enemy = new Enemy(me, pathPoints.get(random.nextInt(pathPoints.size())));
+    princess = new Princess(me, pathPoints.get(random.nextInt(pathPoints.size())));
     light.getTransforms().add( new Translate( 50 , -100.0 , 0 ) );
 
-    root.getChildren().addAll(origin, me, enemy, mazeWall, clock, light);
+    root.getChildren().addAll(origin, me, enemy, princess, mazeWall, clock, light);
     Scene scene = new Scene(root, 1280, 720, true);
 
     camera.getTransforms().addAll(initialCameraPosition,  cameraAngle);
     scene.setCamera(camera);
 
-    timer = new AnimationTimer() {
-      @Override
-      public void handle(long l) {
-        t += 0.016;
-        if (t > 0.1) {
-          onUpdate();
-          t = 0;
-        }
-      }
-    };
-    timer.start();
-    return scene;
-  }
-
-  private void onUpdate() {
-    Point3D cameraNextDir = me.onUpdate(mazeWall);
-    initialCameraPosition.setX(initialCameraPosition.getTx() + cameraNextDir.getX());
-    initialCameraPosition.setZ(initialCameraPosition.getTz() + cameraNextDir.getZ());
-    cameraAngle.setAngle(cameraAngleDegree);
-    enemy.onUpdate();
-    clock.onUpdate();
-  }
-
-  @Override
-  public void start(Stage stage)throws Exception {
-/*
-    final Parent root = FXMLLoader.load(getClass().getResource("scene.fxml"));
-    final Scene scene = new Scene(root);
-    scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
-
-    stage.setTitle("FavaFx and Gradle");
-    stage.setScene(scene);
-    stage.show();
-*/
-    Scene scene = createScene();
     scene.setOnKeyPressed(e -> {
       switch (e.getCode()) {
         case W:
@@ -122,11 +93,28 @@ public class MainApp extends Application {
           break;
       }
     });
-    stage.setScene(scene);
-    stage.show();
+
+    timer = new AnimationTimer() {
+      @Override
+      public void handle(long l) {
+        t += 0.016;
+        if (t > 0.1) {
+          onUpdate();
+          t = 0;
+        }
+      }
+    };
+    timer.start();
+    return scene;
   }
 
-  public static void main(String[] args) {
-    launch(args);
+  private void onUpdate() {
+    Point3D cameraNextDir = me.onUpdate(mazeWall);
+    initialCameraPosition.setX(initialCameraPosition.getTx() + cameraNextDir.getX());
+    initialCameraPosition.setZ(initialCameraPosition.getTz() + cameraNextDir.getZ());
+    cameraAngle.setAngle(cameraAngleDegree);
+    enemy.onUpdate(mazeWall);
+    princess.onUpdate(maze3DController, me, mazeWall);
+    clock.onUpdate();
   }
 }
