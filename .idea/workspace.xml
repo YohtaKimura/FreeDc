@@ -2,14 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2f740ca-8a48-4b99-a28c-0863d388f2cf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/view/BadEnding.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/controller/MusicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Maze3DGame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Maze3DGame/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Maze3DGame/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Maze3DGame/controller/Maze3DController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Maze3DGame/controller/Maze3DController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/free/MainApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/free/MainApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Maze3DGame/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Maze3DGame/controller/Maze3DController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/controller/Maze3DController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Maze3DGame/model/SceneName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/model/SceneName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Maze3DGame/view/Opening.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/view/Opening.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Maze3DGame/view/maze3D/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/view/maze3D/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Maze3DGame/view/maze3D/Maze3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/view/maze3D/Maze3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/free/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/free/MainApp.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -111,12 +119,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Wall.MainApp" />
+    <configuration name="MainApp (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="free.MainApp" />
       <module name="FreeDc.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Wall.*" />
+          <option name="PATTERN" value="free.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,19 +138,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="freeOni.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Maze" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Maze.Maze" />
-      <module name="FreeDc.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Maze.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -165,10 +160,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainApp (1)" />
         <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Maze3D" />
         <item itemvalue="Application.Maze3D" />
       </list>
     </recent_temporary>

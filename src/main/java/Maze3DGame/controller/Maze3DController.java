@@ -25,6 +25,7 @@ public class Maze3DController {
 	}
 
 	public void handleCollisionWithEnemy() {
+		MusicController.c.stop();
 		stage.setScene(Main.getScenes().get(SceneName.BAD_ENDING));
 	}
 }
