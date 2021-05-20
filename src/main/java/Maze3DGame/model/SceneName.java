@@ -1,5 +1,5 @@
 package Maze3DGame.model;
 
 public enum SceneName {
-	OPENING, ENDING, MAZE;
+	OPENING, ENDING, MAZE, BAD_ENDING;
 }

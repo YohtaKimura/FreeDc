@@ -24,4 +24,7 @@ public class Maze3DController {
 		stage.setScene(Main.getScenes().get(SceneName.ENDING));
 	}
 
+	public void handleCollisionWithEnemy() {
+		stage.setScene(Main.getScenes().get(SceneName.BAD_ENDING));
+	}
 }

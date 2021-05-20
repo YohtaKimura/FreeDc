@@ -1,6 +1,7 @@
 package Maze3DGame;
 
 import Maze3DGame.model.SceneName;
+import Maze3DGame.view.BadEnding;
 import Maze3DGame.view.Ending;
 import Maze3DGame.view.Opening;
 import java.util.HashMap;
@@ -21,6 +22,7 @@ public class Main extends Application {
 
     scenes.put(SceneName.OPENING, new Opening(stage).getScene());
     scenes.put(SceneName.ENDING, new Ending(stage).getScene());
+    scenes.put(SceneName.BAD_ENDING, new BadEnding(stage).getScene());
 
 		stage.setScene(scenes.get(SceneName.OPENING));
 		stage.setTitle("Maze3D");

@@ -1,5 +1,6 @@
 package Maze3DGame.view.maze3D;
 
+import Maze3DGame.controller.Maze3DController;
 import java.util.concurrent.ThreadLocalRandom;
 import javafx.collections.ObservableList;
 import javafx.geometry.Point3D;
@@ -35,7 +36,7 @@ public class Enemy extends SimpleCube {
         getTranslateZ() == c.getTranslateZ();
   }
 
-  public void onUpdate(Group participant) {
+  public void onUpdate(Maze3DController controller, SimpleCube player, Group participant) {
     if (shouldBeExited()) {
       setPlayerDirection();
     } else {
@@ -50,6 +51,9 @@ public class Enemy extends SimpleCube {
       if (CubeUtils.isColliding(nextPoint, wall.getCurrentPoint())) {
         direction = new Point3D(0, 0, 0);
         return;
+      }
+      if (CubeUtils.isColliding(nextPoint, wall.getCurrentPoint()) || CubeUtils.isColliding(currentPoint, player.getCurrentPoint())) {
+        controller.handleCollisionWithEnemy();
       }
     }
 

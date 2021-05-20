@@ -113,7 +113,7 @@ public class Maze3D {
     initialCameraPosition.setX(initialCameraPosition.getTx() + cameraNextDir.getX());
     initialCameraPosition.setZ(initialCameraPosition.getTz() + cameraNextDir.getZ());
     cameraAngle.setAngle(cameraAngleDegree);
-    enemy.onUpdate(mazeWall);
+    enemy.onUpdate(maze3DController, me, mazeWall);
     princess.onUpdate(maze3DController, me, mazeWall);
     clock.onUpdate();
   }

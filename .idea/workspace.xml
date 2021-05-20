@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2f740ca-8a48-4b99-a28c-0863d388f2cf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/view/BadEnding.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Maze3DGame/controller/ViewOneController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Maze3DGame/view/Ending.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Maze3DGame/view/Ending.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Maze3DGame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Maze3DGame/controller/Maze3DController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/controller/Maze3DController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Maze3DGame/model/SceneName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/model/SceneName.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Maze3DGame/view/Opening.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/view/Opening.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Maze3DGame/view/maze3D/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/view/maze3D/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Maze3DGame/view/maze3D/Maze3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Maze3DGame/view/maze3D/Maze3D.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +46,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Maze3DGame.view" />
       <recent name="Maze3D" />
       <recent name="clockNumber" />
       <recent name="ClockNumber" />
